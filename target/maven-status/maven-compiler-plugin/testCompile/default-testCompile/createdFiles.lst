@@ -1,0 +1,7 @@
+com\qa\POC\RunnerClass\RunnerClass.class
+com\qa\POC\StepDefinition\Individual.class
+com\qa\POC\Utils\ConfigFileReader.class
+com\qa\POC\Utils\CommonFunctions.class
+com\qa\POC\StepDefinition\Institutional_Investor.class
+com\qa\POC\GlobalVariables\GlobalVariables.class
+com\qa\POC\StepDefinition\Financial_Advisor.class

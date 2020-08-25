@@ -1,0 +1,2862 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+			ExtentReports Library 2.41.1 | http://relevantcodes.com/extentreports-for-selenium/ | https://github.com/anshooarora/
+			Copyright (c) 2015, Anshoo Arora (Relevant Codes) | Copyrights licensed under the New BSD License | http://opensource.org/licenses/BSD-3-Clause
+			Documentation: http://extentreports.relevantcodes.com 
+		-->
+
+		<meta charset='UTF-8' /> 
+		<meta name='description' content='ExtentReports (by Anshoo Arora) is a reporting library for automation testing for .NET and Java. It creates detailed and beautiful HTML reports for modern browsers. ExtentReports shows test and step summary along with dashboards, system and environment details for quick analysis of your tests.' />
+		<meta name='robots' content='noodp, noydir' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='extentx' id='extentx' content='' />
+		
+		<title>
+				QA-MIS_Automation
+		</title>
+		
+		
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.css' type='text/css' rel='stylesheet' />
+		
+		<style>
+				
+      
+        
+      
+    
+		</style>
+	</head>
+	
+	
+	<body class='extent default standard hide-overflow'>
+		<!-- nav -->
+		<nav>
+			<div class='logo-container blue darken-2'>
+				<a class='logo-content' href='http://extentreports.relevantcodes.com'>
+					<span>ExtentReports</span>
+				</a>
+				<a href='#' data-activates='slide-out' class='button-collapse hide-on-large-only'><i class='mdi-navigation-apps'></i></a>
+			</div>
+			<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+				<li class='analysis waves-effect active'><a href='#!' class='test-view' onclick="_updateCurrentStage(0)"><i class='mdi-action-dashboard'></i>Test Details</a></li>
+				<li class='analysis waves-effect'>
+					<a href='#!' onclick="_updateCurrentStage(-1)" class='dashboard-view'><i class='mdi-action-track-changes'></i></i>Analysis</a>
+				</li>
+			</ul>
+			<span class='report-name'>MIS Automation Test Report</span> <span class='report-headline'></span>
+			<ul class='right hide-on-med-and-down nav-right'>
+				<li class='theme-selector' alt='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");' title='Click to toggle dark theme. To enable by default, use js configuration $("body").addClass("dark");'>
+					<i class='mdi-hardware-desktop-windows'></i>
+				</li>
+				<li>
+					<span class='suite-started-time'>2019-11-13 13:43:31</span>
+				</li>
+				<li>
+					<span>v2.41.1</span>
+				</li>
+			</ul>
+		</nav>
+		<!-- /nav -->
+		
+		<!-- container -->
+		<div class='container'>
+			
+			<!-- dashboard -->
+			<div id='dashboard-view' class='row'>
+				<div class='time-totals'>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-tests'> 
+							<span class='panel-name'>Total Tests</span> 
+							<span class='total-tests'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6'>
+						<div class='card suite-total-steps'> 
+							<span class='panel-name'>Total Steps</span> 
+							<span class='total-steps'> <span class='panel-lead'></span> </span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-current'> 
+							<span class='panel-name'>Total Time Taken (Current Run)</span> 
+							<span class='suite-total-time-current-value panel-lead'>0h 7m 58s+50ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s12'>
+						<div class='card suite-total-time-overall'> 
+							<span class='panel-name'>Total Time Taken (Overall)</span> 
+							<span class='suite-total-time-overall-value panel-lead'>0h 7m 58s+50ms</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-start-time'>
+						<div class='card accent green-accent'> 
+							<span class='panel-name'>Start</span> 
+							<span class='panel-lead suite-started-time'>2019-11-13 13:35:33</span> 
+						</div> 
+					</div>
+					<div class='col l2 m4 s6 suite-end-time'>
+						<div class='card accent pink-accent'> 
+							<span class='panel-name'>End</span> 
+							<span class='panel-lead suite-ended-time'>2019-11-13 13:43:31</span> 
+						</div> 
+					</div>
+				</div>
+				<div class='charts'>
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Tests View</span>
+							</div> 
+							<div class='panel-setting modal-trigger test-count-setting right'>
+								<a href='#test-count-setting'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='test-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-pass-count weight-normal'></span> test(s) passed</span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='t-fail-count weight-normal'></span> test(s) failed, <span class='t-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div> 
+					<div class='col s12 m6 l4 fh'> 
+						<div class='card-panel'> 
+							<div>
+								<span class='panel-name'>Steps View</span>
+							</div> 
+							<div class='panel-setting modal-trigger step-status-filter right'>
+								<a href='#step-status-filter'><i class='mdi-navigation-more-vert text-md'></i></a>
+							</div> 
+							<div class='chart-box'>
+								<canvas class='text-centered' id='step-analysis'></canvas>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-pass-count weight-normal'></span> step(s) passed </span>
+							</div> 
+							<div>
+								<span class='weight-light'><span class='s-fail-count weight-normal'></span> step(s) failed, <span class='s-others-count weight-normal'></span> others</span>
+							</div> 
+						</div> 
+					</div>
+					<div class='col s12 m12 l4 fh'> 
+						<div class='card-panel'> 
+							<span class='panel-name'>Pass Percentage</span> 
+							<span class='pass-percentage panel-lead'></span> 
+							<div class='progress light-blue lighten-3'> 
+								<div class='determinate light-blue'></div> 
+							</div> 
+						</div> 
+					</div>
+				</div>
+				<div class='system-view'>
+					<div class='col l4 m12 s12'>
+						<div class='card-panel'>
+							<span class='label info outline right'>Environment</span>
+							<table>
+								<thead>
+									<tr>
+										<th>Param</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr>
+											<td>User Name</td>
+											<td>de.chuphal</td>
+										</tr>
+										<tr>
+											<td>OS</td>
+											<td>Linux</td>
+										</tr>
+										<tr>
+											<td>Java Version</td>
+											<td>1.8.0_151</td>
+										</tr>
+										<tr>
+											<td>Host Name</td>
+											<td>GSG1PM-FT0414</td>
+										</tr>
+										<tr>
+											<td>Machine</td>
+											<td>Windows 1064 Bit</td>
+										</tr>
+										<tr>
+											<td>Selenium</td>
+											<td>3.7.0</td>
+										</tr>
+										<tr>
+											<td>Maven</td>
+											<td>3.5.2</td>
+										</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /dashboard -->
+			
+			<!-- tests -->
+			<div id='test-view' class='row _addedTable'>
+				<div class='col _addedCell1'>
+					<div class='contents'>
+						<div class='card-panel heading'>
+							<h5>Tests</h5>
+						</div>
+						<div class='card-panel filters'>
+							<div>
+								<a class='dropdown-button btn-floating btn-small waves-effect waves-light grey tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+									<i class='mdi-action-reorder'></i>
+								</a>
+								<ul id='tests-toggle' class='dropdown-content'>
+									<li class='pass'><a href='#!'>Pass</a></li>
+									<li class='fail'><a href='#!'>Fail</a></li>
+									<li class='skip'><a href='#!'>Skip</a></li>
+									<li class='divider'></li>
+									<li class='clear'><a href='#!'>Clear Filters</a></li>
+								</ul>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+									<i class='mdi-navigation-close'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light grey' id='enableDashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+									<i class='mdi-action-track-changes'></i>
+								</a>
+							</div>
+							<div>
+								<a class='btn-floating btn-small waves-effect waves-light blue enabled' id='refreshCharts' alt='Refresh Charts on Filters' title='Refresh Charts on Filters'>
+									<i class='mdi-navigation-refresh'></i>
+								</a>
+							</div>
+							<div class='search' alt='Search Tests' title='Search Tests'>
+								<div class='input-field left'>
+									<input id='searchTests' type='text' class='validate' placeholder='Search Tests...'>
+								</div>
+								<a href="#" class='btn-floating btn-small waves-effect waves-light grey'>
+									<i class='mdi-action-search'></i>
+								</a>
+							</div>
+						</div>
+						<div class='card-panel no-padding-h no-padding-v no-margin-v'>
+							<div class='wrapper'>
+								<ul id='test-collection' class='test-collection'>
+										<li class='collection-item test displayed active pass ' extentid='ef84c57f-d4ed-4273-9bb4-e06359764460'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Open_Apply_LNSA </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:35:34</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:34</td>
+																		<td class='step-name'>LNSA_Open_Apply_LNSA</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:34</td>
+																		<td class='step-name'>Dashboard_Functionality</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:39</td>
+																		<td class='step-name'>Navigate to Applicaion URL</td>
+																	<td class='step-details'>Browser launched and navigated to<br><font color="Blue">http://mymis.geminisolutions.in/<a href='/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_39PM.png' data-featherlight='image'><img class='report-img' src='file:////home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_39PM.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:39</td>
+																		<td class='step-name'>Open MIS Login Page</td>
+																	<td class='step-details'>Launched MIS Login Page successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_39PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:43</td>
+																		<td class='step-name'>Verify Signin button</td>
+																	<td class='step-details'>Signin button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_43PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:44</td>
+																		<td class='step-name'>Wait for Signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:46</td>
+																		<td class='step-name'>Click on Signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:49</td>
+																		<td class='step-name'>Verify LNSA button</td>
+																	<td class='step-details'>LNSA button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_49PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:50</td>
+																		<td class='step-name'>Wait for LNSA button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_50PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:51</td>
+																		<td class='step-name'>Click on LNSA Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_51PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:53</td>
+																		<td class='step-name'>Verify apply_LNSA button</td>
+																	<td class='step-details'>apply_LNSA button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_53PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:54</td>
+																		<td class='step-name'>Wait for apply_LNSA button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_54PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:55</td>
+																		<td class='step-name'>Click on apply_LNSA Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_55PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='d4a5cd7b-cf50-4917-b7fd-dfb32786a0ca'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Validate_Calendar_Control </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:35:56</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:56</td>
+																		<td class='step-name'>LNSA_Validate_Calendar_Control</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:56</td>
+																		<td class='step-name'>Verify prevDate button</td>
+																	<td class='step-details'>prevDate button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_56PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:58</td>
+																		<td class='step-name'>Wait for prevDate button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_57PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:35:58</td>
+																		<td class='step-name'>Click on prevDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_35_58PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:00</td>
+																		<td class='step-name'>Verify nextDate button</td>
+																	<td class='step-details'>nextDate button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_00PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:01</td>
+																		<td class='step-name'>Wait for nextDate button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_01PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:02</td>
+																		<td class='step-name'>Click on nextDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_02PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:04</td>
+																		<td class='step-name'>Verify date1 is present</td>
+																	<td class='step-details'>date1 is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_04PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:05</td>
+																		<td class='step-name'>Wait for Date1 to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_05PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:06</td>
+																		<td class='step-name'>Click on nextDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_05PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:08</td>
+																		<td class='step-name'>Verify Date2 is present</td>
+																	<td class='step-details'>date1 is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_08PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:09</td>
+																		<td class='step-name'>Wait for Date2 to be enabled</td>
+																	<td class='step-details'>Date2 is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_09PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:09</td>
+																		<td class='step-name'>Click on nextDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_09PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='be242b9a-bd9d-4412-b40e-60c30ea1e8c4'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Validate_Reason </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:36:11</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:11</td>
+																		<td class='step-name'>LNSA_Validate_Reason</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:12</td>
+																		<td class='step-name'>Verify submitLNSAbtn is present</td>
+																	<td class='step-details'>submitLNSAbtn is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_12PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:13</td>
+																		<td class='step-name'>Wait for submitLNSAbtn to be enabled</td>
+																	<td class='step-details'>submitLNSAbtn is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_13PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:13</td>
+																		<td class='step-name'>Click on nextDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_13PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:16</td>
+																		<td class='step-name'>Verify LNSAreasonBox is present</td>
+																	<td class='step-details'>LNSAreasonBox is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_15PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:18</td>
+																		<td class='step-name'>Verify reasonCloseBox is present</td>
+																	<td class='step-details'>reasonCloseBox is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_18PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:19</td>
+																		<td class='step-name'>Wait for reasonCloseBox to be enabled</td>
+																	<td class='step-details'>reasonCloseBox is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_19PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:19</td>
+																		<td class='step-name'>Click on reasonCloseBox</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_19PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:22</td>
+																		<td class='step-name'>Verify submitLNSAbtn is present</td>
+																	<td class='step-details'>submitLNSAbtn is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_22PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:23</td>
+																		<td class='step-name'>Wait for submitLNSAbtn to be enabled</td>
+																	<td class='step-details'>submitLNSAbtn is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_23PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:23</td>
+																		<td class='step-name'>Click on nextDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_23PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:25</td>
+																		<td class='step-name'>Verify LNSAreasonBox is present</td>
+																	<td class='step-details'>LNSAreasonBox is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_25PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:27</td>
+																		<td class='step-name'>Wait for LNSAreasonBox to be enabled</td>
+																	<td class='step-details'>LNSAreasonBox is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_27PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:27</td>
+																		<td class='step-name'>Enter LNSA reason in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_27PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='c7abc0bc-02ff-479d-ba59-392968b4ea52'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Apply_LNSA </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:36:28</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:28</td>
+																		<td class='step-name'>LNSA_Apply_LNSA</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:28</td>
+																		<td class='step-name'>Verify submitRequest is present</td>
+																	<td class='step-details'>submitRequest is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_28PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:30</td>
+																		<td class='step-name'>Wait for submitRequest to be enabled</td>
+																	<td class='step-details'>submitRequest is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_29PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:30</td>
+																		<td class='step-name'>Click on submitRequest Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_30PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:32</td>
+																		<td class='step-name'>Verify request has been submitted successfully</td>
+																	<td class='step-details'>request has been submitted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_32PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:34</td>
+																		<td class='step-name'>Verify OK is present</td>
+																	<td class='step-details'>OK is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_33PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:35</td>
+																		<td class='step-name'>Click on OK Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_35PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='23b14542-c6b7-4b36-b783-197fec2ade83'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Select_Week_Checkbox </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:36:36</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:36</td>
+																		<td class='step-name'>LNSA_Select_Week_Checkbox</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:36</td>
+																		<td class='step-name'>Verify selectWeek is present</td>
+																	<td class='step-details'>selectWeek is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_36PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:38</td>
+																		<td class='step-name'>Wait for selectWeek to be enabled</td>
+																	<td class='step-details'>selectWeek is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:38</td>
+																		<td class='step-name'>Click on selectWeek Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_38PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:40</td>
+																		<td class='step-name'>Verify submitLNSAbtn is present</td>
+																	<td class='step-details'>submitLNSAbtn is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_40PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:41</td>
+																		<td class='step-name'>Wait for submitLNSAbtn to be enabled</td>
+																	<td class='step-details'>submitLNSAbtn is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_41PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:42</td>
+																		<td class='step-name'>Click on nextDate Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_42PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:44</td>
+																		<td class='step-name'>Verify LNSAreasonBox is present</td>
+																	<td class='step-details'>LNSAreasonBox is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:45</td>
+																		<td class='step-name'>Wait for LNSAreasonBox to be enabled</td>
+																	<td class='step-details'>LNSAreasonBox is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_45PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:46</td>
+																		<td class='step-name'>Enter LNSA reason in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_46PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:47</td>
+																		<td class='step-name'>Verify submitRequest is present</td>
+																	<td class='step-details'>submitRequest is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_47PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:48</td>
+																		<td class='step-name'>Wait for submitRequest to be enabled</td>
+																	<td class='step-details'>submitRequest is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:49</td>
+																		<td class='step-name'>Click on submitRequest Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:51</td>
+																		<td class='step-name'>Verify request has been submitted successfully</td>
+																	<td class='step-details'>request has been submitted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_51PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:52</td>
+																		<td class='step-name'>Verify OK is present</td>
+																	<td class='step-details'>OK is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_52PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:54</td>
+																		<td class='step-name'>Click on OK Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_53PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='accc42ad-750a-40eb-be1e-9af053936d18'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Open_View_Request_Status </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:36:55</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:55</td>
+																		<td class='step-name'>LNSA_Open_View_Request_Status</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:55</td>
+																		<td class='step-name'>Verify ViewRequestStatus is present</td>
+																	<td class='step-details'>ViewRequestStatus is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_55PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:56</td>
+																		<td class='step-name'>Wait for ViewRequestStatus to be enabled</td>
+																	<td class='step-details'>ViewRequestStatus is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_56PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:57</td>
+																		<td class='step-name'>Click on ViewRequestStatus Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_57PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:36:59</td>
+																		<td class='step-name'>Verify SearchLNSA is present</td>
+																	<td class='step-details'>SearchLNSA is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_36_59PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:01</td>
+																		<td class='step-name'>Wait for SearchLNSA to be enabled</td>
+																	<td class='step-details'>SearchLNSA is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_00PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:01</td>
+																		<td class='step-name'>Enter LNSA in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_01PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:11</td>
+																		<td class='step-name'>Verify ViewLNSA is present</td>
+																	<td class='step-details'>ViewLNSA is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_11PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:13</td>
+																		<td class='step-name'>Wait for ViewLNSA to be enabled</td>
+																	<td class='step-details'>ViewLNSA is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_12PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:13</td>
+																		<td class='step-name'>Click on ViewLNSA Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_13PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:15</td>
+																		<td class='step-name'>Verify LNSA details are present and view is opended</td>
+																	<td class='step-details'>LNSA details are present and view is opened</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_15PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='74be64ec-64e2-4f21-b298-9a3e65f2ece9'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Close_LNSA_Request_Details </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:37:16</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:16</td>
+																		<td class='step-name'>LNSA_Close_LNSA_Request_Details</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:17</td>
+																		<td class='step-name'>Verify CloseLNSA is present</td>
+																	<td class='step-details'>CloseLNSA is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_17PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:18</td>
+																		<td class='step-name'>Wait for CloseLNSA to be enabled</td>
+																	<td class='step-details'>CloseLNSA is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_18PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:18</td>
+																		<td class='step-name'>Click on CloseLNSA Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_18PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='23283902-45b5-4857-8dff-b88144241a21'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_Cancel_Request </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:37:20</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:20</td>
+																		<td class='step-name'>LNSA_Cancel_Request</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:24</td>
+																		<td class='step-name'>Verify Cancel button is present</td>
+																	<td class='step-details'>Cancel button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_24PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:25</td>
+																		<td class='step-name'>Wait for Cancel button to be enabled</td>
+																	<td class='step-details'>Cancel button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_25PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:26</td>
+																		<td class='step-name'>Click on Cancel button Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_26PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:29</td>
+																		<td class='step-name'>Confirm to concel LNSA</td>
+																	<td class='step-details'>Cancelled confirmed</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_29PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:33</td>
+																		<td class='step-name'>Verify cancel LNSA</td>
+																	<td class='step-details'>Cancelled successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_33PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='29bb8083-17a3-484c-8810-3e6f096e55a2'>
+											<div class='test-head'>
+												<span class='test-name'>LNSA_MIS_Logout </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:37:35</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:35</td>
+																		<td class='step-name'>LNSA_MIS_Logout</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:35</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_35PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:37</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:40</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_40PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:41</td>
+																		<td class='step-name'>Wait for user drop down field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_41PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:42</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_41PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:44</td>
+																		<td class='step-name'>Verfiy mis logged out</td>
+																	<td class='step-details'>logged out</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:45</td>
+																		<td class='step-name'>Close the Browser</td>
+																	<td class='step-details'>Browser is closed successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='6731168a-77cc-43b5-8d0a-f90700389496'>
+											<div class='test-head'>
+												<span class='test-name'>Leave_Apply_Leave </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:37:45</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:45</td>
+																		<td class='step-name'>Leave_Apply_Leave</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:45</td>
+																		<td class='step-name'>Dashboard_Functionality</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:50</td>
+																		<td class='step-name'>Navigate to Applicaion URL</td>
+																	<td class='step-details'>Browser launched and navigated to<br><font color="Blue">http://mymis.geminisolutions.in/<a href='/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_49PM.png' data-featherlight='image'><img class='report-img' src='file:////home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_49PM.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:50</td>
+																		<td class='step-name'>Open MIS Login Page</td>
+																	<td class='step-details'>Launched MIS Login Page successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_50PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:54</td>
+																		<td class='step-name'>Verify Signin button</td>
+																	<td class='step-details'>Signin button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_53PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:55</td>
+																		<td class='step-name'>Wait for Signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_55PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:37:55</td>
+																		<td class='step-name'>Click on Signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_37_55PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:16</td>
+																		<td class='step-name'>Verify Leave Management button</td>
+																	<td class='step-details'>Leave Management button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_16PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:17</td>
+																		<td class='step-name'>Wait for Leave Management button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_17PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:18</td>
+																		<td class='step-name'>Click on leave management Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_17PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:20</td>
+																		<td class='step-name'>Verify Leave Management button</td>
+																	<td class='step-details'>Apply Leave button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_20PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:21</td>
+																		<td class='step-name'>Wait for apply leave button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_21PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:22</td>
+																		<td class='step-name'>Click on aplly Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_22PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:24</td>
+																		<td class='step-name'>leave from field</td>
+																	<td class='step-details'>leave from field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_24PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:29</td>
+																		<td class='step-name'>leave to field</td>
+																	<td class='step-details'>leave to field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_29PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:34</td>
+																		<td class='step-name'>leave half day field</td>
+																	<td class='step-details'>leave half day field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_34PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:36</td>
+																		<td class='step-name'>Mark first day of leave as half day clicked successfully</td>
+																	<td class='step-details'>Marked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_35PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:37</td>
+																		<td class='step-name'>leave type field</td>
+																	<td class='step-details'>leave type field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:40</td>
+																		<td class='step-name'>Verify leave type selected</td>
+																	<td class='step-details'>leave type selected successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_39PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:40</td>
+																		<td class='step-name'>leave reason field</td>
+																	<td class='step-details'>leave reason field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_40PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:44</td>
+																		<td class='step-name'>Enter leave reason in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:44</td>
+																		<td class='step-name'>contact number field</td>
+																	<td class='step-details'>contact number field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:46</td>
+																		<td class='step-name'>Enter primary conatct number in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_46PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:46</td>
+																		<td class='step-name'>alternate contact number field</td>
+																	<td class='step-details'>contact number field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_46PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:48</td>
+																		<td class='step-name'>Enter alt contact in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:49</td>
+																		<td class='step-name'>verify select  field present</td>
+																	<td class='step-details'>field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:50</td>
+																		<td class='step-name'>Select availability</td>
+																	<td class='step-details'>selected successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_50PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:51</td>
+																		<td class='step-name'>verify submit  field present</td>
+																	<td class='step-details'>field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_51PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:53</td>
+																		<td class='step-name'>varify leave submit clicked</td>
+																	<td class='step-details'>clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_53PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:57</td>
+																		<td class='step-name'>Verify leave applied successfully</td>
+																	<td class='step-details'>leave applied successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_56PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='9e3aa5e6-5bb3-4549-b4c9-0e7706edd370'>
+											<div class='test-head'>
+												<span class='test-name'>Leave_Leave_Collision </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:38:58</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:58</td>
+																		<td class='step-name'>Leave_Leave_Collision</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:38:58</td>
+																		<td class='step-name'>leave from field</td>
+																	<td class='step-details'>leave from field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_38_58PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:03</td>
+																		<td class='step-name'>leave to field</td>
+																	<td class='step-details'>leave to field present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_03PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:08</td>
+																		<td class='step-name'>verify date collision</td>
+																	<td class='step-details'>date collision</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_08PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='634cb301-107d-41fe-bf0c-6663932171d7'>
+											<div class='test-head'>
+												<span class='test-name'>Leave_View_Leave_Details </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:39:10</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:10</td>
+																		<td class='step-name'>Leave_View_Leave_Details</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:10</td>
+																		<td class='step-name'>verify viewRequestStatus filed present</td>
+																	<td class='step-details'>field  presentn</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_10PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:14</td>
+																		<td class='step-name'>verify leave status filed present</td>
+																	<td class='step-details'>Leave approval is pending</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_14PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='0b27ba2a-0d40-4b1d-a5b0-85c822ee8e2a'>
+											<div class='test-head'>
+												<span class='test-name'>Leave_Cancel_Leave </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:39:15</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:15</td>
+																		<td class='step-name'>Leave_Cancel_Leave</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:16</td>
+																		<td class='step-name'>verify cancel filed present</td>
+																	<td class='step-details'>filed present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_15PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:17</td>
+																		<td class='step-name'>click on cancel</td>
+																	<td class='step-details'>leave cancelled successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_17PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:26</td>
+																		<td class='step-name'>varify leave cancelled successfully</td>
+																	<td class='step-details'>leave cancelled successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_26PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='691f7cd5-f091-4f7b-8d8a-aaef610e7d23'>
+											<div class='test-head'>
+												<span class='test-name'>MIS_Logout </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:39:28</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:28</td>
+																		<td class='step-name'>MIS_Logout</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:28</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_28PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:31</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_30PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:33</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_33PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:34</td>
+																		<td class='step-name'>Wait for user drop down field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_34PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:34</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_34PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:37</td>
+																		<td class='step-name'>Verfiy mis logged out</td>
+																	<td class='step-details'>logged out</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:38</td>
+																		<td class='step-name'>Close the Browser</td>
+																	<td class='step-details'>Browser is closed successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='90f14cd3-37c7-4139-af83-fcd9fd4d43b3'>
+											<div class='test-head'>
+												<span class='test-name'>MIS_SignIn_With_InValid_Credentials </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:39:38</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:38</td>
+																		<td class='step-name'>MIS_SignIn_With_InValid_Credentials</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:38</td>
+																		<td class='step-name'>MIS_LoginFunctionality</td>
+																	<td class='step-details'>The script is runnisigninng in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:42</td>
+																		<td class='step-name'>Navigate to Applicaion URL</td>
+																	<td class='step-details'>Browser launched and navigated to<br><font color="Blue">http://mymis.geminisolutions.in/<a href='/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_42PM.png' data-featherlight='image'><img class='report-img' src='file:////home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_42PM.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:42</td>
+																		<td class='step-name'>Open MIS Login Page</td>
+																	<td class='step-details'>Launched MIS Login Page successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_42PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:44</td>
+																		<td class='step-name'>Verify username textbox is present</td>
+																	<td class='step-details'>Username textbox is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_43PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:45</td>
+																		<td class='step-name'>Enter username in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_45PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:45</td>
+																		<td class='step-name'>Verify password textbox is present</td>
+																	<td class='step-details'>Verify MIS >> LOG IN >> Password field object exists</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_45PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:47</td>
+																		<td class='step-name'>Enter password in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_46PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:47</td>
+																		<td class='step-name'>Verify Signin button</td>
+																	<td class='step-details'>Signin button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_47PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:48</td>
+																		<td class='step-name'>Wait for Signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:48</td>
+																		<td class='step-name'>Click on Signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:50</td>
+																		<td class='step-name'>Verify error message appears on invalid login</td>
+																	<td class='step-details'>Verify MIS >> LOG IN >> error message field object exists</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_39_50PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='5ee8b9da-7b80-48b6-8c63-5f543f4185f8'>
+											<div class='test-head'>
+												<span class='test-name'>MIS_SignIn_Forgot_Password </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:39:51</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:39:51</td>
+																		<td class='step-name'>MIS_SignIn_Forgot_Password</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:01</td>
+																		<td class='step-name'>Verify forgot password button</td>
+																	<td class='step-details'>forgot password button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_01PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:02</td>
+																		<td class='step-name'>Wait for forgot password button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_02PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:02</td>
+																		<td class='step-name'>Click on forgot password Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_02PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:04</td>
+																		<td class='step-name'>Verify reset password button</td>
+																	<td class='step-details'>reset password button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_04PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:05</td>
+																		<td class='step-name'>Wait for reset password button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_05PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:05</td>
+																		<td class='step-name'>Click on forgot password Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_05PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:17</td>
+																		<td class='step-name'>Wait for reset password button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_16PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:17</td>
+																		<td class='step-name'>Verify password reset is successfull</td>
+																	<td class='step-details'>Password reset successfull</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_17PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:18</td>
+																		<td class='step-name'>Verify OK button</td>
+																	<td class='step-details'>OK button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_18PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:19</td>
+																		<td class='step-name'>Wait for OK button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_19PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:20</td>
+																		<td class='step-name'>Click on OK Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_19PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:21</td>
+																		<td class='step-name'>Wait for signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_21PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:21</td>
+																		<td class='step-name'>Click on signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_21PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='4f1993b1-ad24-483f-914c-4367c68ec8a7'>
+											<div class='test-head'>
+												<span class='test-name'>MIS_SignIn_With_Valid_Credentials </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:40:22</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:22</td>
+																		<td class='step-name'>MIS_SignIn_With_Valid_Credentials</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:22</td>
+																		<td class='step-name'>Verify username textbox is present</td>
+																	<td class='step-details'>Username textbox is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_22PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:24</td>
+																		<td class='step-name'>Enter username in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_24PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:24</td>
+																		<td class='step-name'>Verify password textbox is present</td>
+																	<td class='step-details'>Verify MIS >> LOG IN >> Password field object exists</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_24PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:25</td>
+																		<td class='step-name'>Enter password in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_25PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:25</td>
+																		<td class='step-name'>Verify Signin button</td>
+																	<td class='step-details'>Signin button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_25PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:27</td>
+																		<td class='step-name'>Wait for Signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_27PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:27</td>
+																		<td class='step-name'>Click on Signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_27PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:52</td>
+																		<td class='step-name'>Validate title of MIS</td>
+																	<td class='step-details'>Title of MIS: <font color="Blue">Gemini - MIS</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_52PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='4819be8e-1ad2-468f-bf3b-98191ad694d8'>
+											<div class='test-head'>
+												<span class='test-name'>MIS_SignIn_In_New_Session </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:40:52</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:52</td>
+																		<td class='step-name'>MIS_SignIn_In_New_Session</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:55</td>
+																		<td class='step-name'>Verify MIS is logged out in new session</td>
+																	<td class='step-details'>MIS is logged out in new session</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:55</td>
+																		<td class='step-name'>Close the Browser</td>
+																	<td class='step-details'>Browser is closed successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='84cf7e7b-e06c-4029-9745-17d7eb6d2e22'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_Open_User_Profile </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:40:55</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:55</td>
+																		<td class='step-name'>Dashboard_Open_User_Profile</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:55</td>
+																		<td class='step-name'>Dashboard_Functionality</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:59</td>
+																		<td class='step-name'>Navigate to Applicaion URL</td>
+																	<td class='step-details'>Browser launched and navigated to<br><font color="Blue">http://mymis.geminisolutions.in/<a href='/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_58PM.png' data-featherlight='image'><img class='report-img' src='file:////home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_58PM.png' /></a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:40:59</td>
+																		<td class='step-name'>Open MIS Login Page</td>
+																	<td class='step-details'>Launched MIS Login Page successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_40_59PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:03</td>
+																		<td class='step-name'>Verify Signin button</td>
+																	<td class='step-details'>Signin button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_03PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:04</td>
+																		<td class='step-name'>Wait for Signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_04PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:04</td>
+																		<td class='step-name'>Click on Signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_04PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:08</td>
+																		<td class='step-name'>Verify User dropdown button</td>
+																	<td class='step-details'>User dropdown button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_07PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:09</td>
+																		<td class='step-name'>Wait for User dropdown button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_09PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:09</td>
+																		<td class='step-name'>Click on User dropdown Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_09PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:10</td>
+																		<td class='step-name'>Verify Profile button</td>
+																	<td class='step-details'>Profile button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_10PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:12</td>
+																		<td class='step-name'>Wait for Profile button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_12PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:12</td>
+																		<td class='step-name'>Click on Profile Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_12PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='25f44021-5251-4cbf-aa41-4c3144df29e0'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_Update_Profile_Picture </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:41:13</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:13</td>
+																		<td class='step-name'>Dashboard_Update_Profile_Picture</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:14</td>
+																		<td class='step-name'>Verify user profile pic field is present</td>
+																	<td class='step-details'>user profile pic field is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_13PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:16</td>
+																		<td class='step-name'>Enter username in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_16PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='c1c09625-5675-4342-8b05-98978665dca7'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_Update_Contact_Details </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:41:17</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:17</td>
+																		<td class='step-name'>Dashboard_Update_Contact_Details</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:17</td>
+																		<td class='step-name'>Verify contact number field is present</td>
+																	<td class='step-details'>contact number field is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_17PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:19</td>
+																		<td class='step-name'>Wait for contact number field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_18PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:19</td>
+																		<td class='step-name'>Enter contact number in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_19PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:20</td>
+																		<td class='step-name'>Click on Update Profile Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_20PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:22</td>
+																		<td class='step-name'>Verfiy mobile no should conatin 10 digits</td>
+																	<td class='step-details'>mobile no should conatin 10 digits</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_22PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:23</td>
+																		<td class='step-name'>Click on OK Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_23PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:25</td>
+																		<td class='step-name'>Enter contact number in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_25PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:27</td>
+																		<td class='step-name'>Verfiy extension number field is visible</td>
+																	<td class='step-details'>extension number field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_26PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:28</td>
+																		<td class='step-name'>Wait for contact number field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_28PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:28</td>
+																		<td class='step-name'>Enter extension number in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_28PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='424cbd8d-bd06-492e-b6ad-71f26b726aae'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_Update_Address </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:41:29</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:29</td>
+																		<td class='step-name'>Dashboard_Update_Address</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:29</td>
+																		<td class='step-name'>Verfiy Change address field is visible</td>
+																	<td class='step-details'>Change address field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_29PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:31</td>
+																		<td class='step-name'>Click on Change address</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_31PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:32</td>
+																		<td class='step-name'>Verfiy Change address field is visible</td>
+																	<td class='step-details'>Change address field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_32PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:33</td>
+																		<td class='step-name'>Wait for Country field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_33PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:34</td>
+																		<td class='step-name'>Click on Country</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_34PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:35</td>
+																		<td class='step-name'>verify Counrty is selected</td>
+																	<td class='step-details'>value Seleceted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_35PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:35</td>
+																		<td class='step-name'>Verfiy state field is visible</td>
+																	<td class='step-details'>state field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_35PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:37</td>
+																		<td class='step-name'>Click on state field</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:38</td>
+																		<td class='step-name'>verify State is selected</td>
+																	<td class='step-details'>value Seleceted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_38PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:38</td>
+																		<td class='step-name'>Verfiy city field is visible</td>
+																	<td class='step-details'>city field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_38PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:40</td>
+																		<td class='step-name'>Click on state field</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_40PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:41</td>
+																		<td class='step-name'>verify State is selected</td>
+																	<td class='step-details'>value Seleceted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_41PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:41</td>
+																		<td class='step-name'>Verfiy pincode is visible</td>
+																	<td class='step-details'>pincode field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_41PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:43</td>
+																		<td class='step-name'>Wait for pincode field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_43PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:43</td>
+																		<td class='step-name'>Enter pincode in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_43PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:43</td>
+																		<td class='step-name'>Verfiy present address is visible</td>
+																	<td class='step-details'>present address field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_43PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:45</td>
+																		<td class='step-name'>Wait for present address field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_44PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:45</td>
+																		<td class='step-name'>Enter present address in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_45PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:45</td>
+																		<td class='step-name'>Verfiy update address is visible</td>
+																	<td class='step-details'>update address field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_45PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:47</td>
+																		<td class='step-name'>Wait for update address field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_47PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:47</td>
+																		<td class='step-name'>Click on Country</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_47PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:49</td>
+																		<td class='step-name'>Wait for update address field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_48PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:50</td>
+																		<td class='step-name'>Click on Country</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_50PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='5462a3f6-3cf9-4036-84a7-6e7d74204973'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_Update_Password </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:41:52</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:52</td>
+																		<td class='step-name'>Dashboard_Update_Password</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:52</td>
+																		<td class='step-name'>Verfiy change password is visible</td>
+																	<td class='step-details'>change password field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_52PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:53</td>
+																		<td class='step-name'>Wait for change password field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_53PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:54</td>
+																		<td class='step-name'>Click on change password</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_54PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:55</td>
+																		<td class='step-name'>Verfiy old password is visible</td>
+																	<td class='step-details'>old password field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_55PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:56</td>
+																		<td class='step-name'>Wait for old password field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_56PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:57</td>
+																		<td class='step-name'>Enter old password in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_57PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:57</td>
+																		<td class='step-name'>Verfiy new password is visible</td>
+																	<td class='step-details'>new password field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_57PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:58</td>
+																		<td class='step-name'>Wait for new password field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_58PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:59</td>
+																		<td class='step-name'>Enter new password in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_59PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:41:59</td>
+																		<td class='step-name'>Verfiy confirm password is visible</td>
+																	<td class='step-details'>confirm password field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_41_59PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:00</td>
+																		<td class='step-name'>Wait for confirm password field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_00PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:01</td>
+																		<td class='step-name'>Enter confirm password in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_01PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:01</td>
+																		<td class='step-name'>Verfiy update password is visible</td>
+																	<td class='step-details'>update password field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_01PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:02</td>
+																		<td class='step-name'>Wait for update password field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_02PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:03</td>
+																		<td class='step-name'>Click on update password</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_02PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:12</td>
+																		<td class='step-name'>Verify Signin button</td>
+																	<td class='step-details'>Signin button is present</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_11PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:13</td>
+																		<td class='step-name'>Wait for Signin button to be enabled</td>
+																	<td class='step-details'>Button is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_13PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:14</td>
+																		<td class='step-name'>Click on Signin Button</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_13PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='6c6c56fe-f209-4ab0-b35e-6f485997f6c8'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_Update_Skills </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:42:18</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'></span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'></span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:18</td>
+																		<td class='step-name'>Dashboard_Update_Skills</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:18</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_18PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:20</td>
+																		<td class='step-name'>Wait for user drop down field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_19PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:20</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_20PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:22</td>
+																		<td class='step-name'>Verfiy skills is visible</td>
+																	<td class='step-details'>user skills field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_22PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:23</td>
+																		<td class='step-name'>Wait for skills field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_23PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:24</td>
+																		<td class='step-name'>Click on skills</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_24PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:26</td>
+																		<td class='step-name'>Verfiy skills is visible</td>
+																	<td class='step-details'>user skills field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_26PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:28</td>
+																		<td class='step-name'>Wait for skills field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_27PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:28</td>
+																		<td class='step-name'>Wait for skills field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_28PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:28</td>
+																		<td class='step-name'>verify Technology is selected</td>
+																	<td class='step-details'>value Seleceted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_28PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:29</td>
+																		<td class='step-name'>Verfiy proficiency Level is visible</td>
+																	<td class='step-details'>user proficiency Level field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_29PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:31</td>
+																		<td class='step-name'>Wait for proficiency Level field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_31PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:31</td>
+																		<td class='step-name'>verify proficiency Level is selected</td>
+																	<td class='step-details'>value Seleceted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_31PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:32</td>
+																		<td class='step-name'>Verfiy skill type is visible</td>
+																	<td class='step-details'>user skill type field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_32PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:34</td>
+																		<td class='step-name'>Wait for skill type field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_33PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:34</td>
+																		<td class='step-name'>verify skill type is selected</td>
+																	<td class='step-details'>value Seleceted successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_34PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:35</td>
+																		<td class='step-name'>Verfiy exp in months is visible</td>
+																	<td class='step-details'>field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_35PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:36</td>
+																		<td class='step-name'>Wait for exp in months field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_36PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:37</td>
+																		<td class='step-name'>Enter exp in months in Textbox</td>
+																	<td class='step-details'>Input entered successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:37</td>
+																		<td class='step-name'>Verfiy save skills is visible</td>
+																	<td class='step-details'>field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_37PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:38</td>
+																		<td class='step-name'>Wait for save skiils field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_38PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:42:39</td>
+																		<td class='step-name'>Click on skills</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_42_38PM.png> Screenshot</a></td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+										<li class='collection-item test displayed active pass ' extentid='08c82c04-c276-4911-9d8e-d17a4cc51697'>
+											<div class='test-head'>
+												<span class='test-name'>Dashboard_MIS_Logout </span>
+												<span class='test-status label right outline capitalize pass'>pass</span>
+												<span class='category-assigned hide '></span>
+											</div>
+											<div class='test-body'>
+												<div class='test-info'>
+													<span title='Test started time' alt='Test started time' class='test-started-time label green lighten-1 text-white'>2019-11-13 13:43:20</span>
+													<span title='Test ended time' alt='Test ended time' class='test-ended-time label red lighten-1 text-white'>2019-11-13 13:43:30</span>
+													<span title='Time taken to finish' alt='Time taken to finish' class='test-time-taken label blue-grey lighten-3 text-white'>0h 0m 10s+113ms</span>
+												</div>
+												<div class='test-desc'></div>
+												<div class='test-attributes'>
+												</div>
+												<div class='test-steps'>
+													<table class='bordered table-results'>
+														<thead>
+															<tr>
+																<th>Status</th>
+																<th>Timestamp</th>
+																	<th>StepName</th>
+																<th>Details</th>
+															</tr>
+														</thead>
+														<tbody>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:20</td>
+																		<td class='step-name'>Dashboard_MIS_Logout</td>
+																	<td class='step-details'>The script is running in the Host Name<br>GSG1PM-FT0414</td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:21</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_43_20PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:23</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_43_23PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:25</td>
+																		<td class='step-name'>Verfiy user drop down is visible</td>
+																	<td class='step-details'>user drop down field is visible</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_43_25PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:27</td>
+																		<td class='step-name'>Wait for user drop down field to be enabled</td>
+																	<td class='step-details'>Field is enabled</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_43_26PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:27</td>
+																		<td class='step-name'>Click on user drop down</td>
+																	<td class='step-details'>Clicked successfully</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_43_27PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:29</td>
+																		<td class='step-name'>Verfiy mis logged out</td>
+																	<td class='step-details'>logged out</br><a href =/home/de.chuphal/eclipse-workspace/QA-MIS_Automation/Reports/11-13-2019/screenShot/13_Nov_2019_01_43_29PM.png> Screenshot</a></td>
+																</tr>
+																<tr>
+																	<td class='status pass' title='pass' alt='pass'><i class='mdi-action-check-circle'></i></td>
+																	<td class='timestamp'>13:43:30</td>
+																		<td class='step-name'>Close the Browser</td>
+																	<td class='step-details'>Browser is closed successfully</td>
+																</tr>
+														</tbody>
+													</table>
+													<ul class='collapsible node-list' data-collapsible='accordion'>
+													</ul>
+												</div>
+											</div>
+										</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id='test-details-wrapper' class='col _addedCell2'>
+					<div class='contents'>
+						<div class='card-panel details-view'>
+							<h5 class='details-name'></h5>
+							<div class='step-filters right'>
+								<span class='btn-floating btn-small waves-effect waves-light blue' status='info' alt='info' title='info'><i class='mdi-action-info-outline'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light green' status='pass' alt='pass' title='pass'><i class='mdi-action-check-circle'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red' status='fail' alt='fail' title='fail'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red darken-4' status='fatal' alt='fatal' title='fatal'><i class='mdi-navigation-cancel'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light red lighten-2' status='error' alt='error' title='error'><i class='mdi-alert-error'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light orange' alt='warning' status='warning' title='warning'><i class='mdi-alert-warning'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light cyan' status='skip' alt='skip' title='skip'><i class='mdi-content-redo'></i></span>
+								<span class='btn-floating btn-small waves-effect waves-light grey darken-2' status='clear-step-filter' alt='Clear filters' title='Clear filters'><i class='mdi-content-clear'></i></span>
+							</div>
+							<div class='details-container'>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /tests -->
+			
+			<!-- categories -->
+			<!-- /categories -->
+			
+			<!-- exceptions -->
+			<!-- /exceptions -->
+			
+			<!-- testrunner logs -->
+			<!-- /testrunner logs -->
+			
+		</div>
+		<!-- /container -->
+		
+		<!-- test dashboard counts setting -->
+		<div id='test-count-setting' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Configure Tests Count Setting</h5> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodes' class='with-gap'> 
+				<label for='parentWithoutNodes'>Parent Tests Only (Does not include child nodes in counts)</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='parentWithoutNodesAndNodes' class='with-gap'> 
+				<label for='parentWithoutNodesAndNodes'>Parent Tests Without Child Tests + Child Tests</label> 
+				<br> 
+				<input name='test-count-setting' type='radio' id='childNodes' class='with-gap'> 
+				<label for='childNodes'>Child Tests Only</label> 
+			</div> 
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /test dashboard counts setting -->
+		
+		<!-- filter for step status -->
+		<div id='step-status-filter' class='modal bottom-sheet'> 
+			<div class='modal-content'> 
+				<h5>Select status</h5> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-pass'> 
+				<label for='step-dashboard-filter-pass'>Pass</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fail'> 
+				<label for='step-dashboard-filter-fail'>Fail</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-fatal'> 
+				<label for='step-dashboard-filter-fatal'>Fatal</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-error'> 
+				<label for='step-dashboard-filter-error'>Error</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-warning'> 
+				<label for='step-dashboard-filter-warning'>Warning</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-skip'> 
+				<label for='step-dashboard-filter-skip'>Skipped</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-info'> 
+				<label for='step-dashboard-filter-info'>Info</label> 
+				<br> 
+				<input checked class='filled-in' type='checkbox' id='step-dashboard-filter-unknown'> 
+				<label for='step-dashboard-filter-unknown'>Unknown</label> 
+			</div>
+			<div class='modal-footer'> 
+				<a href='#!' class='modal-action modal-close waves-effect waves-green btn'>Save</a> 
+			</div> 
+		</div>
+		<!-- /filter for step status -->
+		
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports/6032d73243ba4fe4fb8769eb9c315d4fdf16fe68/cdn/extent.js' type='text/javascript'></script>
+
+		<script>$(document).ready(function() { $('.logo span').html('ExtentReports'); });</script>
+		<script>
+				
+      
+        $(document).ready(function() {
+        $('#enableDashboard').click();
+        });
+      
+    
+		</script>
+	</body>
+</html>
